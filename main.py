@@ -8,21 +8,22 @@ from datetime import datetime
 
 CHECK_INTERVAL_MINUTES = int(os.getenv("CHECK_INTERVAL_MINUTES", "5"))
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
-TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+CHAT_IDS = [
+    os.getenv("TELEGRAM_CHAT_ID_1"),
+    os.getenv("TELEGRAM_CHAT_ID_2"),
+]
 CALENDAR_ID = os.getenv("CALENDAR_ID")
 PERSON_COUNT = os.getenv("PERSON_COUNT", "1")
 
 
 def send_telegram_alert(message):
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-    payload = {
-        "chat_id": TELEGRAM_CHAT_ID,
-        "text": message
-    }
-    try:
-        requests.post(url, data=payload)
-    except Exception as e:
-        print(f"Failed to send Telegram alert: {e}")
+    for chat_id in CHAT_IDS:
+        payload = {"chat_id": chat_id, "text": message}
+        try:
+            requests.post(url, data=payload)
+        except Exception as e:
+            print(f"Failed to send Telegram alert to {chat_id}: {e}")
 
 def find_target_dates(text):
     pattern = r'(\b\d{2})\.(\d{2})\.(\d{4})\b'
