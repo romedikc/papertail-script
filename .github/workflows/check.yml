@@ -24,7 +24,8 @@ jobs:
       - name: Run script
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHAT_ID_1: ${{ secrets.TELEGRAM_CHAT_ID_1 }}
+          TELEGRAM_CHAT_ID_2: ${{ secrets.TELEGRAM_CHAT_ID_2 }}
           ASP_NET_SESSION_ID: ${{ secrets.ASP_NET_SESSION_ID }}
           CALENDAR_ID: ${{ secrets.CALENDAR_ID }}
 
