@@ -91,8 +91,4 @@ def check_availability():
 if __name__ == "__main__":
     check_availability()
 
-    schedule.every(CHECK_INTERVAL_MINUTES).minutes.do(check_availability)
 
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
