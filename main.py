@@ -34,9 +34,7 @@ def find_target_dates(text):
         day = int(day_str)
         month = int(month_str)
 
-        if month == 7:
-            valid_dates.append(f"{day_str}.{month_str}.{year_str}")
-        elif month == 8 and day <= 20:
+        if month == 11 and day > 11:
             valid_dates.append(f"{day_str}.{month_str}.{year_str}")
 
     return valid_dates
@@ -82,11 +80,11 @@ def check_availability():
     found = find_target_dates(response.text)
 
     if found:
-        msg = f"✅ Appointment found for July or August! Go book it: https://appointment.bmeia.gv.at"
+        msg = f"✅ Appointment found for November! Go book it: https://appointment.bmeia.gv.at"
         send_telegram_alert(msg)
         return True
     else:
-        print("❌ No available dates in July or August yet.")
+        print("❌ No available dates in November.")
         return False
 
 if __name__ == "__main__":
