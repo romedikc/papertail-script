@@ -85,9 +85,6 @@ def check_availability():
         return True
     else:
         print("No available dates in June.")
-        msg = "No available dates in June."
-        send_telegram_alert(msg)
-
         return False
 
 if __name__ == "__main__":
