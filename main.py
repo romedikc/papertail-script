@@ -80,11 +80,14 @@ def check_availability():
     found = find_target_dates(response.text)
 
     if found:
-        msg = f"Appointment found for November! Go book it: https://appointment.bmeia.gv.at"
+        msg = f"Appointment found for June! Go book it: https://appointment.bmeia.gv.at"
         send_telegram_alert(msg)
         return True
     else:
-        print("No available dates in November.")
+        print("No available dates in June.")
+        msg = "No available dates in June."
+        send_telegram_alert(msg)
+
         return False
 
 if __name__ == "__main__":
